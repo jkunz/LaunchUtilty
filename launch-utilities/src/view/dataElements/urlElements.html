@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Data Element</title>
+    <link rel="stylesheet" href="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/css/coral.css">
+    <link rel="stylesheet" href="../global.css">
+
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
+    <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/coral.js"></script>
+    <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+  </head>
+  <body>
+    <p>For this data element, which of the following portions of the url would you like to include:</p>
+    <form>
+      <table width="80%">
+        <tr>
+          <td width="20%">Protocol</td>
+          <td width="20%">Domain</td>
+          <td width="20%">Path</td>
+          <td width="20%">Hash Values</td>
+          <td width="20%">Query Params</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="options" value="protocol"></td>
+          <td>
+            <input type="checkbox" name="options" value="subdomain"> Subdomain<br>
+            <input type="checkbox" name="options" value="domain"> Domain
+          </td>
+          <td><input type="checkbox" name="options" value="path"></td>
+          <td><input type="checkbox" name="options" value="hash"></td>
+          <td><input type="checkbox" name="options" value="queryParams"></td>
+        </tr>
+      </table>
+    </form>
+    <p>
+      Example URL: https://www.33sticks.com/launch-utilities#jumpLink?cid=exampleURL
+      <br>URL Output: <span id="URLoutput"></span>
+    </p>
+
+    <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+    <script>
+      jQuery("input[name='options']").on('input', function() {
+        var protocol=$("input[value='protocol']").prop("checked")?"http://":""
+        var subdomain=$("input[value='subdomain']").prop("checked")?"www":""
+        var subdot=$("input[value='subdomain']").prop("checked") && $("input[value='domain']").prop("checked")?".":""
+        var domain=$("input[value='domain']").prop("checked")?"33sticks.com":""
+        var path=$("input[value='path']").prop("checked")?"/launch-utilities":""
+        var hash=$("input[value='hash']").prop("checked")?"#jumpLink":""
+        var queryParams=$("input[value='queryParams']").prop("checked")?"?cid=exampleURL":""
+        jQuery("#URLoutput").text(protocol+subdomain+subdot+domain+path+hash+queryParams)
+      });
+
+      window.extensionBridge.register({
+        init: function(info) {
+          if (info.settings) {
+            // TODO Populate form values from persisted settings.
+          }
+        },
+
+        getSettings: function() {
+          // TODO Return settings object from form values.
+        },
+
+        validate: function() {
+          // TODO Return whether settings are valid.
+        }
+      });
+    </script>
+  </body>
+</html>

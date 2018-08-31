@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Extension Configuration</title>
+    <link rel="stylesheet" href="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/css/coral.css">
+    <link rel="stylesheet" href="../global.css">
+
+    <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/libs/jquery.js"></script>
+    <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/coral.js"></script>
+    <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+  </head>
+  <body>
+    <p>
+        This extension includes the following tools:
+        <p>A condition that can make a rule fire only once per: 
+              <ul>
+                <li>visit (based on localStorage)</li>
+                <li>visitor (based on sessionStorage)</li>
+                <li>page (based on a DOM JS object)</li>
+              </ul>
+              For an example use case, if I only want to know the first time a user applies a filter on a search results page, I could use fire-once-per-page. If I want a pixel to only fire the first time a user gets to a confirmation page, I could use once-per-visitor</p>
+              <p>The following Data Elements: 
+                <ul>
+                  <li>Experience Cloud Visitor ID (aka MCID) service version. eg: "3.1.2"</li>
+                  <li>Launch Library Friendly Build Date (standardized to GTM). eg: "Wed, 09 May 2018 22:44:20 GMT"</li>
+                  <li>Launch Property Name (in Launch, you can get the friendly Property Name rather than the library ID like in DTM)</li>
+                  <li>Launch Library Environment. eg: "Development"</li>
+                  <li>Any combination of the following URL parts:
+                    <ul>
+                      <li>protocol (eg "https://"" or "http://"</li>
+                      <li>subdomain (eg "blog.acme.com")</li>
+                      <li>domain (eg "acme.com")</li>
+                      <li>path (eg "/products")</li>
+                      <li>query params </li>
+                    </ul>
+                  </li>
+                </ul>
+              </p>
+
+    </p>
+
+    <p>If you have appMeasurement library 1.8 or higher, we can automatically push your list of rules you've captured, as well as rules with backwards-compatibility conflicts, into Adobe Analytics variables. What variable would you like: </p>
+    <form>
+      <label>
+        <span class="label">For your rules-contributing-to-this-beacon:</span>
+        <input type="text" name="rulesListVar" id="rulesListVar" placeholder="prop42">
+      </label>
+      <br><label>
+        <span class="label">For your rules with backwards compatibility conflicts:</span>
+        <input type="text" name="backWardsRulesVar" id="backWardsRulesVar" placeholder="prop43">
+      </label>
+      <br>
+    </form>
+    
+
+    <div class="sticksLogo" height="150" width="150">
+      <a href="https://33sticks.com/dynamic-pixel-builder/" target="_blank"><img src="../../../33Sticks_logo.svg" height="150" width="150"></a> 
+    </div>
+    <script>
+      window.extensionBridge.register({
+        init: function(info) {
+          if (info.settings && info.settings.rulesListVar) { //populate form from existing settings
+            document.getElementById('rulesListVar').value = info.settings.rulesListVar;
+          }
+          if (info.settings && info.settings.rulesListVar) { //populate form from existing settings
+            document.getElementById('backWardsRulesVar').value = info.settings.backWardsRulesVar;
+          }
+        },
+
+        getSettings: function() {
+          return { //send setting from form to extension logic
+            rulesListVar: document.getElementById('rulesListVar').value || '',
+            backWardsRulesVar: document.getElementById('backWardsRulesVar').value || ''
+          }
+        },
+
+        validate: function() {
+          return true
+        }
+      });
+    </script>
+  </body>
+</html>

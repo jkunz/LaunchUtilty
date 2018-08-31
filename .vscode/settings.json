@@ -1,0 +1,25 @@
+{
+    "deploy": {
+        "packages": [
+            {
+                "name": "Version 2.3.4",
+                "description": "Package version 2.3.4",
+                "files": ["*"],
+                "targets":"DDT Test",
+                "deployOnSave": false
+            }
+        ],
+        "targets": [
+            {
+                "type": "ftp",
+                "name": "DDT Test",
+                "description": "A SFTP folder",
+                "dir": "/digitalDataTactics",
+                "host": "ftp.jenniferkunz.com",
+                "port": 21,
+                "user": "jooniper@jenniferkunz.com",
+                "password": "8thAnniversary!"
+            }
+        ]
+    }
+}

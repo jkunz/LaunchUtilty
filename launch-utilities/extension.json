@@ -1,0 +1,140 @@
+{
+  "displayName": "Launch Utilities",
+  "name": "launch-utilities",
+  "version": "1.0.26",
+  "exchangeUrl": "https://experiencecloud.adobeexchange.com/experiencecloud.details.ENTER URL HERE.html",
+  "description": "Offers solutions for common needs within Launch.",
+  "author": {
+    "name": "33 Sticks",
+    "url": "https://33sticks.com",
+    "email": "info@33sticks.com"
+  },
+  "viewBasePath": "src/view/",
+  "iconPath": "33Sticks_logo.svg",
+  "conditions": [
+    {
+      "displayName": "Fire Once Per",
+      "name": "fire-once-per",
+      "libPath": "src/lib/conditions/fireOncePer.js",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {}
+      },
+      "viewPath": "conditions/fireOncePer.html"
+    }
+  ],
+  "dataElements": [
+    {
+      "displayName": "Rules Contributing to this Adobe Analytics Beacon",
+      "name": "rules-contributing-to-this-adobe-analytics-beacon",
+      "libPath": "src/lib/dataElements/rulesContributingToThisAdobeAnalyticsBeacon.js",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "displayName": "Launch Property",
+      "name": "launch-property",
+      "libPath": "src/lib/dataElements/launchProperty.js",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "displayName": "Launch Library Build Date- Friendly",
+      "name": "launch-library-build-date-friendly",
+      "libPath": "src/lib/dataElements/launchLibraryBuildDateFriendly.js",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "displayName": "Adobe Analytics Library Version",
+      "name": "adobe-analytics-library-version",
+      "libPath": "src/lib/dataElements/adobeAnalyticsLibraryVersion.js",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "displayName": "Adobe Experience Cloud ID Service Version",
+      "name": "adobe-experience-cloud-id-service-version",
+      "libPath": "src/lib/dataElements/adobeExperienceCloudIdServiceVersion.js",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "displayName": "Launch Library Environment",
+      "name": "launch-library-environment",
+      "libPath": "src/lib/dataElements/launchLibraryEnvironment.js",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "displayName": "Launch Backwards Compatibility Conflicts",
+      "name": "launch-backwards-compatibility-conflicts",
+      "libPath": "src/lib/dataElements/launchBackwardsCompatibilityConflicts.js",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "displayName": "URL Elements",
+      "name": "url-elements",
+      "libPath": "src/lib/dataElements/urlElements.js",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {}
+      },
+      "viewPath": "dataElements/urlElements.html"
+    }
+  ],
+  "actions": [
+    {
+      "displayName": "Capture Rule",
+      "name": "capture-rule",
+      "libPath": "src/lib/actions/captureRule.js",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "displayName": "Clear Rules List",
+      "name": "clear-rules-list",
+      "libPath": "src/lib/actions/clearRulesList.js",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ],
+  "configuration": {
+    "viewPath": "configuration/configuration.html",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {}
+    }
+  }
+}

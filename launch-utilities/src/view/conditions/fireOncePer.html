@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Condition</title>
+    <link rel="stylesheet" href="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/css/coral.css">
+    <link rel="stylesheet" href="../global.css">
+
+    <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/libs/jquery.js"></script>
+    <script src="//assets.adobedtm.com/activation/reactor/coralui/3.16.0/js/coral.js"></script>
+    <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+  </head>
+  <body>
+    <form>
+      <label>
+        <span class="label">I want this rule to fire only once per:</span>
+        <select id="expiration">
+          <option value="Choose One" disabled selected>choose...</option>
+          <option value="visitor">Visitor</option>
+          <option value="visit">Visit</option>
+          <option value="page">Page</option>
+        </select>
+      </label>
+      <br>
+    </form>
+    <p>Things to be aware of: 
+      <ul>
+        <li><b>"Visitor"</b> is based on localStorage and is therefore confined to the domain it was created on (even if your Analytics implementation uses CNAMEs, localStorage does not).</li>
+        <li><b>"Visit"</b> is based on sessionStorage and not only confined to a 1st-party domain, it is also tied to browser session, NOT the 30-minutes-of-inactivity window that Adobe Analytics uses.</li>
+        <li><b>"Page"</b> is based on the actual DOM, which may not apply to Single Page App pages.</li>
+      </ul>
+      Get <a href="https://medium.com/launch-by-adobe/data-persistence-from-dtm-to-launch-52d26b834b54" target="_blank">more information on data storage in Launch</a>. 
+    </p>
+    <div class="sticksLogo" height="150" width="150">
+      <a href="https://33sticks.com/dynamic-pixel-builder/" target="_blank"><img src="../../../33Sticks_logo.svg" height="150" width="150"></a> 
+    </div>
+    <script>
+
+      window.extensionBridge.register({
+        init: function(info) {
+          if (info.settings) { //populate form from existing settings
+            document.getElementById('expiration').value = (info.settings && info.settings.expiration)?info.settings.expiration:'Choose One';
+          }
+        },
+
+        getSettings: function() {
+          return { //send setting from form to extension logic
+            expiration: document.getElementById('expiration').value || '',
+          }
+        },
+
+        validate: function() {
+          if(document.getElementById('expiration').value.length=0 || document.getElementById('expiration').value == "Choose One"){
+            return false
+          }else{
+            return true
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

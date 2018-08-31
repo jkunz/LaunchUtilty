@@ -1,0 +1,21 @@
+{
+  "name": "launch-utilities",
+  "version": "0.0.1",
+  "description": "Tools for common needs within Launch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Adobe",
+    "Launch"
+  ],
+  "author": "33 Sticks",
+  "license": "ISC",
+  "devDependencies": {
+    "@adobe/reactor-packager": "^2.6.2",
+    "@adobe/reactor-sandbox": "^8.4.0",
+    "@adobe/reactor-scaffold": "^1.1.12",
+    "@adobe/reactor-turbine": "^25.1.0"
+  }
+}
